@@ -1,0 +1,10 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t rdss/docker-react -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true rdss/docker-react npm run test
+  
